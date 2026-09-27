@@ -84,8 +84,8 @@ function ExportHubCardButton({
 
         gsap.set(circle, { xPercent: -50, scale: 0, transformOrigin: `50% ${originY}px` });
 
-        const label = container.querySelector<HTMLElement>(".hub-card-label");
-        const hover = container.querySelector<HTMLElement>(".hub-card-label-hover");
+        const label = container.querySelector(".hub-card-label") as HTMLElement | null;
+        const hover = container.querySelector(".hub-card-label-hover") as HTMLElement | null;
 
         if (label) gsap.set(label, { y: 0 });
         if (hover) gsap.set(hover, { y: h + 12, opacity: 0 });

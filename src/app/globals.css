@@ -162,6 +162,19 @@
   background: #00F2FE;
 }
 
+/* Utility to completely hide scrollbars while preserving scrolling */
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
 /* 🌀 CYTORN Aerospace Keyframe Animations */
 @keyframes pulse-brand {
   0%, 100% { 
@@ -204,6 +217,21 @@
 
 .animate-alert-flash {
   animation: alert-flash 1.8s ease-in-out infinite;
+}
+
+@keyframes periodic-glow-orange {
+  0%, 100% { 
+    border-color: rgba(255, 94, 54, 0.35);
+    box-shadow: 0 0 14px rgba(255, 94, 54, 0.15), inset 0 0 10px rgba(255, 94, 54, 0.04);
+  }
+  50% { 
+    border-color: rgba(255, 94, 54, 0.90);
+    box-shadow: 0 0 32px rgba(255, 94, 54, 0.45), 0 0 12px rgba(255, 94, 54, 0.25), inset 0 0 16px rgba(255, 94, 54, 0.10);
+  }
+}
+
+.animate-glow-orange {
+  animation: periodic-glow-orange 2.4s ease-in-out infinite;
 }
 
 .animate-marquee {
@@ -378,6 +406,52 @@
 .maplibregl-ctrl-attrib,
 .maplibregl-ctrl-bottom-right {
   display: none !important;
+}
+
+/* 💫 Periodic Cyan Glow Animation (tight text-only luminescence, zero surrounding bleed) */
+@keyframes periodic-cyan-glow {
+  0%, 100% {
+    color: #00F2FE;
+    text-shadow: 
+      0 0 1px rgba(0, 242, 254, 0.5),
+      0 1px 2px rgba(0, 0, 0, 0.95);
+  }
+  50% {
+    color: #D4FAFD;
+    text-shadow: 
+      0 0 2px #00F2FE,
+      0 0 5px rgba(0, 242, 254, 0.9),
+      0 1px 2px rgba(0, 0, 0, 0.95);
+  }
+}
+
+.periodic-cyan-glow {
+  color: #00F2FE;
+  animation: periodic-cyan-glow 2.4s ease-in-out infinite;
+  will-change: text-shadow, color;
+}
+
+/* 💓 Periodic Badge Pulse Animation */
+@keyframes periodic-badge-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.04);
+    filter: brightness(1.22);
+    opacity: 1;
+  }
+}
+
+.periodic-badge-pulse {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: periodic-badge-pulse 2s ease-in-out infinite;
+  transform-origin: center right;
+  will-change: transform, filter, opacity;
 }
 
 

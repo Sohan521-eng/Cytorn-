@@ -21,7 +21,7 @@ export const DashboardPill: React.FC<DashboardPillProps> = ({
   const isDashboard = pathname !== "/" && !pathname?.startsWith("/login") && !pathname?.startsWith("/register");
 
   const targetHref = isDashboard ? "/" : (href || "/dashboard");
-  const targetLabel = isDashboard ? "Landing Page" : "Launch Dashboard";
+  const targetLabel = isDashboard ? "Landing" : "Launch Dashboard";
   const targetTitle = isDashboard ? "Return to Landing Page" : "Launch Mission Command HUD";
 
   const circleRef = useRef<HTMLSpanElement | null>(null);

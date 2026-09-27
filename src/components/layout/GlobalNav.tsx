@@ -96,7 +96,7 @@ export function GlobalNav() {
           </div>
 
           {/* 2. CENTER: The Navigation Action Pills */}
-          <div className="hidden md:flex items-center justify-center gap-1.5 sm:gap-2 lg:gap-3 flex-1 2xl:flex-initial 2xl:absolute 2xl:left-1/2 2xl:top-1/2 2xl:-translate-x-1/2 2xl:-translate-y-1/2 pointer-events-auto z-10 min-w-0">
+          <div className="hidden md:flex items-center justify-center gap-1.5 sm:gap-2 xl:gap-3 flex-1 pointer-events-auto z-10 min-w-0 px-2">
             {/* Button 1: Active Warning Pill */}
             <WarningPill href="/alerts" />
 
