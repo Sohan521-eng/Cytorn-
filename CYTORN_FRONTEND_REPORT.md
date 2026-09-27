@@ -25,6 +25,7 @@
    - 2.10 [Phase 10: Mission Control Command Center Overhaul & Emergency Action Dispatch](#210-phase-10-mission-control-command-center-overhaul--emergency-action-dispatch)
    - 2.11 [Phase 11: Satellite AI Pattern Studio, Grad-CAM & Scientific Export Hub](#211-phase-11-satellite-ai-pattern-studio-grad-cam--scientific-export-hub)
    - 2.12 [Phase 12: Interactive Navigation Ecosystem, GSAP Micro-Interactions & Action Cards Alignment](#212-phase-12-interactive-navigation-ecosystem-gsap-micro-interactions--action-cards-alignment)
+   - 2.13 [Phase 13: Trajectory & Intensity Prediction Center (/forecast), Navbar Overlap Fix & UI Polish](#213-phase-13-trajectory--intensity-prediction-center-forecast-navbar-overlap-fix--ui-polish)
 3. [Technology Stack & Dependency Inventory](#3-technology-stack--dependency-inventory)
 4. [Design System & Visual Identity Architecture](#4-design-system--visual-identity-architecture)
    - 4.1 [The 60-30-10 Golden Ratio Color Balance](#41-the-60-30-10-golden-ratio-color-balance)
@@ -40,11 +41,13 @@
    - 6.5 [AI Pattern Analyzer Components (`src/components/analyzer/`)](#65-ai-pattern-analyzer-components)
    - 6.6 [Map Rendering Canvas (`src/components/map/`)](#66-map-rendering-canvas)
    - 6.7 [Cyclone AI Assistant & Explainability Layer (`src/components/xai/`)](#67-cyclone-ai-assistant--explainability-layer)
+   - 6.8 [Forecast Prediction Center Components (`src/components/forecast/`)](#68-forecast-prediction-center-components-srccomponentsforecast)
 7. [Routing Architecture & Page Walkthroughs](#7-routing-architecture--page-walkthroughs)
    - 7.1 [Root Public Landing Page (`/`)](#71-root-public-landing-page-)
    - 7.2 [Operational Geospatial Dashboard (`/dashboard`)](#72-operational-geospatial-dashboard-dashboard)
    - 7.3 [AI Satellite Analyzer & Pattern Studio (`/satellite-analyzer`)](#73-ai-satellite-analyzer--pattern-studio-satellite-analyzer)
-   - 7.4 [Authentication & Role Verification (`/login`, `/register`)](#74-authentication--role-verification-login-register)
+   - 7.4 [Trajectory & Intensity Prediction Center (`/forecast`)](#74-trajectory--intensity-prediction-center-forecast)
+   - 7.5 [Authentication & Role Verification (`/login`, `/register`)](#75-authentication--role-verification-login-register)
 8. [Global State Management Architecture (Zustand Stores)](#8-global-state-management-architecture)
 9. [Data Domain Models, TypeScript Contracts & API Client](#9-data-domain-models-typescript-contracts--api-client)
 10. [Animation Physics & Mathematical Implementations](#10-animation-physics--mathematical-implementations)
@@ -129,6 +132,23 @@ The frontend is built to shatter standard academic dashboard tropes. It synthesi
 │ • Built `ScientistProfilePill.tsx` with responsive label roll-up & expanding GSAP circle flood wave             │
 │ • Built `AlertsPill.tsx`, `FullscreenButton.tsx`, `LayersButton.tsx`, `MagicRings.tsx`, and `SplitFlapText.tsx` │
 │ • Aligned all 4 Pipeline Export action cards to `RUN AI INFERENCE` styling, shadows, and GSAP bubble fill       │
+│                                                                                                                 │
+│ [Phase 13: Trajectory & Intensity Prediction Center (/forecast), Navbar Overlap Fix & UI Polish]                │
+│ • Built complete `/forecast` page (Page 5) with 7-component architecture and 3-mode PINN prediction engine      │
+│ • Built `ForecastTopBar.tsx`: Storm selector, 6 horizon tabs, 3 mode toggles, GSAP pill buttons                │
+│ • Built `ForecastGisCanvas.tsx`: MapLibre GL geospatial canvas with trajectory cone & ensemble spaghetti        │
+│ • Built `LandfallCountdownBanner.tsx`: Live countdown timer, surge/wind readouts & expandable detail section    │
+│ • Built `IntensityStudio.tsx`: Recharts ComposedChart dual-axis intensity curves with RI radial gauge           │
+│ • Built `NwpComparisonMatrix.tsx`: AI vs ECMWF/IMD-GFS/NCMRWF accuracy table with toggle checkboxes           │
+│ • Built `PipelineHandoffExport.tsx`: GeoJSON/Shapefile/CSV exporter + 3 inter-page CTA handoffs                │
+│ • Built `LandfallDetailsModal.tsx`: Full coastal diagnostic modal (surge, wind, blocks, evacuation)            │
+│ • Built `RiAttributionModal.tsx`: Rapid Intensification SHAP panel with WMO threshold badges                   │
+│ • Built `forecastData.ts`: Complete mock data engine (Mocha, Biparjoy) + synthesizeScenarioFromInputs()        │
+│ • Built `types.ts`: Domain TypeScript contracts (StormScenario, Waypoint, NwpModelTrack, LandfallInfo, RI)     │
+│ • Fixed GlobalNav.tsx: removed 2xl:absolute centering to eliminate navbar overlap on 1536px viewports          │
+│ • Updated DashboardPill.tsx: shortened "Landing Page" label to "Landing" for compact navbar footprint          │
+│ • Fixed NwpComparisonMatrix.tsx: whitespace-nowrap + inline-flex to prevent badge line-break in narrow panels  │
+│ • Generalized export button labels: "Export GeoJSON", "Export Shapefile", "Export CSV"                        │
 └─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -202,6 +222,23 @@ The project transitioned from the Vite prototype to a full production architectu
 - **`ScientistProfilePill.tsx`**: Built a specialized GSAP capsule pill button in the topbar indicating the logged-in scientist's identity (`Scientist (IMD)` on desktop, `SC` on mobile) with dynamic label roll-up physics, expanding cyan circle fill, and dark cyber text inversion on hover.
 - **Micro-Interaction Suite**: Integrated `AlertsPill.tsx` (pulsing alert counter), `FullscreenButton.tsx` (browser Fullscreen API with physics hover), `LayersButton.tsx` (GIS layer drawer trigger), `MagicRings.tsx` (concentric radar rings with pulse animations), and `SplitFlapText.tsx` (mechanical airport departure-board text animations).
 - **Export Hub Action Cards Alignment**: Upgraded all 4 action cards in `PipelineExportHub.tsx` to match the exact styling, depth, and interactive GSAP rising bubble hover effect of the **`RUN AI INFERENCE`** button while strictly preserving card shape, padding, two-line layout, and individual color themes (Cyan `#00F2FE`, Emerald `#10E7A2`, Coral `#FF5E36`, Tech Cyan `#00F2FE`).
+
+### 2.13 Phase 13: Trajectory & Intensity Prediction Center (/forecast), Navbar Overlap Fix & UI Polish
+- **Complete `/forecast` page (Page 5):** Built the full 7-component Trajectory & Intensity Prediction Center as a production-ready Next.js App Router page. The page infers storm parameters from `/dashboard` and `/satellite-analyzer` via URL query parameters (`?llcc=`, `?vmax=`, `?pc=`, `?storm=`), supporting a seamless operational page-to-page pipeline handoff.
+- **`ForecastTopBar.tsx`**: Command bar with storm scenario selector dropdown (Framer Motion animated portal panel), 6 forecast horizon tabs (`+6h` to `+120h`), 3 prediction mode toggles (Deterministic, Ensemble, NWP Benchmark), speed unit toggle (`km/h` ↔ `knots`), and map control toggles (Cone of Uncertainty, Ensemble Spaghetti). All interactive elements use the reusable `useGsapPill` circular-flood-wave hook.
+- **`ForecastGisCanvas.tsx`**: MapLibre GL geospatial canvas rendering the AI-predicted storm trajectory, historical past track, 120-hour Cone of Uncertainty (empirical $R(t) = R_0 + \gamma t^{1.15}$), 30-member PINN ensemble spaghetti tracks, and NWP model benchmark tracks — with a floating map-control HUD.
+- **`LandfallCountdownBanner.tsx`**: High-urgency coral countdown banner with live IST/UTC landfall timer (`Orbitron 800`), expandable coastal diagnostic section showing projected surge ($3.2\text{m}$), peak winds ($185\text{ km/h}$), affected administrative blocks, and evacuation status. Integrates `InterceptModelPillButton` (GSAP circular expansion) linking to `LandfallDetailsModal`.
+- **`IntensityStudio.tsx`**: Dual-axis Recharts `ComposedChart` displaying wind speed (`km/h` or `knots`) and central pressure (`hPa`) across the 120-hour horizon. Embeds an RI radial gauge at $78.4\%$ with a static cyan SVG ring, pulsing "HIGH RISK" badge, and "Danger Trigger: Wind jumps +55 km/h in 24h" annotation in cyan with drop shadow.
+- **`NwpComparisonMatrix.tsx`**: Interactive model accuracy comparison table with AI vs. ECMWF, IMD-GFS, NCMRWF. Features `<Noise />` background overlay, orange (`#FF5E36`) column headers with text-shadow, per-row toggle checkboxes, plain-language footer guidance, whitespace-nowrap on all cells, and `min-w-[560px]` to prevent badge line-break.
+- **`PipelineHandoffExport.tsx`**: Scientific pipeline hub with 3 downstream inter-page CTAs and 3 multi-format GIS exporters: **Export GeoJSON** (full `FeatureCollection` with track + cone + NWP tracks), **Export Shapefile** (ZIP bundle with README), **Export CSV** (hourly coordinate/wind table). All export buttons use Cyan/Amber/Emerald GSAP rising-bubble pill style.
+- **`LandfallDetailsModal.tsx`**: Full-screen coastal diagnostic modal covering target district/state, coordinates, storm surge with uncertainty range, peak winds (dual unit), central pressure, affected block list, and evacuation status badge.
+- **`RiAttributionModal.tsx`**: RI SHAP explainability modal with WMO/IMD threshold banner, 4 atmospheric driver cards (SST, VWS, OHC, Divergence), and SHAP feature importance bar chart.
+- **`forecastData.ts`**: Static mock data engine for `CYCLONE_MOCHA` and `CYCLONE_BIPARJOY` with full past/forecast track waypoints, 30 ensemble member paths, NWP benchmark tracks, landfall info, and `synthesizeScenarioFromInputs()` override function.
+- **`types.ts`**: Domain TypeScript contracts — `ForecastHorizon`, `ForecastMode`, `SpeedUnit`, `Waypoint`, `EnsembleMember`, `NwpModelTrack`, `LandfallInfo`, `RapidIntensificationData`, `StormScenario`.
+- **GlobalNav Overlap Fix (`GlobalNav.tsx`)**: Removed `2xl:absolute 2xl:left-1/2 2xl:top-1/2 2xl:-translate-x-1/2 2xl:-translate-y-1/2` from the center nav container. At 1536px viewports (1080p / 125% DPI), absolute positioning caused the DashboardPill to collide with the right clock section. Replaced with `flex-1 min-w-0 px-2` for disjoint flex-flow positioning.
+- **DashboardPill Label Shrink (`DashboardPill.tsx`)**: Shortened `targetLabel` from `"Landing Page"` to `"Landing"` for a more compact navbar footprint.
+- **NwpComparisonMatrix Badge Fix**: Added `whitespace-nowrap` and `inline-flex items-center justify-center` to all error cells and the AI badge span, plus `min-w-[560px]` on the table, to prevent `38 km` from line-breaking in narrow panels.
+- **Export Button Label Generalization (`PipelineHandoffExport.tsx`)**: Replaced `GeoJSON (.geojson)`, `ESRI Shapefile (.zip)`, and `CSV Table (.csv)` with clean action-oriented generic labels: `Export GeoJSON`, `Export Shapefile`, `Export CSV`.
 
 ---
 
@@ -412,6 +449,7 @@ d:/SIH 2026/
 │   │   ├── (main)/                             # Operational Command route group
 │   │   │   ├── layout.tsx                      # Topbar + AppSidebar persistent layout
 │   │   │   ├── dashboard/page.tsx              # Geospatial Command Center page
+│   │   │   ├── forecast/page.tsx               # Trajectory & Intensity Prediction Center (NEW)
 │   │   │   └── satellite-analyzer/page.tsx     # Multi-Spectral AI Pattern Studio page
 │   │   ├── favicon.ico
 │   │   ├── globals.css                         # Tailwind v4 theme, animations & utility classes
@@ -461,7 +499,7 @@ d:/SIH 2026/
 │   │       ├── Badge.tsx                       # Standard semantic badge
 │   │       ├── Button.tsx                      # Primary, secondary, danger, ghost buttons
 │   │       ├── Card.tsx                        # Glassmorphic & outlined card wrapper
-│   │       ├── DashboardPill.tsx               # Launch Dashboard pill with GSAP circular hover
+│   │       ├── DashboardPill.tsx               # Launch Dashboard pill with GSAP circular hover (updated: label shortened to "Landing")
 │   │       ├── Dial1078Button.tsx              # NDMA emergency dialer button
 │   │       ├── ElasticSlider.tsx & .css        # Spring-physics slider controls for radiometric thresholds
 │   │       ├── EvacuationZonesButton.tsx       # Evacuation corridor routing trigger
@@ -757,7 +795,78 @@ d:/SIH 2026/
 
 ---
 
+### 6.8 Forecast Prediction Center Components (`src/components/forecast/`)
+
+All 10 files in this module were created in Phase 13. Collectively they implement CYTORN Page 5 — the **Trajectory & Intensity Prediction Center** — which ingests live storm parameters from upstream pages and projects them through a PINN ensemble forecasting engine.
+
+#### 1. `types.ts` — Domain TypeScript Contracts
+- **`ForecastHorizon`**: Union type for the 6 forecast time steps (`+6h` → `+120h`).
+- **`ForecastMode`**: `"deterministic"` | `"ensemble"` | `"nwp_benchmark"`.
+- **`SpeedUnit`**: `"km/h"` | `"knots"`.
+- **`Waypoint`**: Single track point with `hour`, `lat`, `lng`, `vmaxKmh`, `vmaxKts`, `pcHpa`, `category`, `isPast`, `isLandfall`.
+- **`NwpModelTrack`**: Comparative model track with error metrics (`error24hKm`, `error48hKm`, `error72hKm`), landfall target, and enabled toggle flag.
+- **`LandfallInfo`**: Coastal diagnostic data — district, state, coordinates, hour offset, surge meters, peak wind, affected blocks, evacuation status.
+- **`RapidIntensificationData`**: Full RI assessment — probability %, WMO/IMD threshold flag, 24h wind delta, SST, VWS, OHC, divergence level, and SHAP feature importance array.
+- **`StormScenario`**: Master model wrapping all sub-types for the active storm.
+
+#### 2. `forecastData.ts` — Static Mock Data Engine
+- Defines complete `CYCLONE_MOCHA` (BOB-02, Category 4, Very Severe Cyclonic Storm) and `CYCLONE_BIPARJOY` (ARB-01, Extremely Severe Cyclonic Storm) scenario objects.
+- Each scenario includes past track waypoints (T-48h to T-0h), 120h forecast track waypoints, 30 PINN ensemble member paths, 4 NWP benchmark model tracks (with error metrics and landfall targets), detailed landfall info, and rapid intensification diagnostics.
+- Exports `synthesizeScenarioFromInputs(base, llcc, vmax, pc)` to override base storm parameters with live URL-injected values from `/dashboard` and `/satellite-analyzer`.
+
+#### 3. `ForecastTopBar.tsx` — Mission Command Bar
+- **Storm Selector Dropdown**: Framer Motion animated portal panel (scale + blur entrance/exit) listing all available storm scenarios with live coordinate and wind readouts.
+- **6 Forecast Horizon Tabs**: `+6h`, `+12h`, `+24h`, `+48h`, `+72h`, `+120h` — each rendered as GSAP circular-flood pill buttons via the reusable `useGsapPill` hook.
+- **3 Prediction Mode Toggles**: Deterministic, Ensemble, NWP Benchmark, each with contextual sub-label descriptions.
+- **Speed Unit Toggle**: `km/h` / `knots` switcher with animated highlight bar.
+- **Map Controls**: Cone of Uncertainty visibility toggle and Ensemble Spaghetti enable toggle.
+
+#### 4. `ForecastGisCanvas.tsx` — Geospatial Prediction Canvas
+- Renders the storm's **past track** (dashed coral segments), **AI forecast track** (solid cyan segments with category-colored waypoint markers), **120h Cone of Uncertainty** (blue polygon), and up to **30 PINN ensemble spaghetti tracks** (translucent colored lines).
+- In NWP Benchmark mode, renders toggled **ECMWF, IMD-GFS, NCMRWF model tracks** with their respective color codes.
+- Floating map HUD overlays display active LLCC coordinates, active prediction mode, and map control buttons.
+
+#### 5. `LandfallCountdownBanner.tsx` — Urgency Countdown
+- **Live Timer**: Counts down to projected landfall in real time (hours, minutes, seconds) rendered in `Orbitron 800` for maximum urgency.
+- **Landfall Quick Stats**: District name, projected surge height, peak wind speed, and a HIGH RISK badge with pulse animation.
+- **Expandable Diagnostic Section**: Reveals full coastal impact breakdown — coordinates, uncertainty window, affected administrative blocks, and current evacuation status.
+- **`InterceptModelPillButton`**: GSAP circular-flood wave pill linking to `LandfallDetailsModal` with cyan → dark inversion hover.
+
+#### 6. `IntensityStudio.tsx` — Dual-Axis Intensity Chart & RI Gauge
+- **Recharts `ComposedChart`**: Plots wind speed ($V_{max}$) as a filled `Area` and central pressure ($P_c$) as a `Line` across the full temporal horizon. Supports real-time axis switching between `km/h` and `knots`. Includes `ReferenceLine` markers for the RI trigger threshold and landfall time.
+- **RI Radial Gauge**: Embedded SVG gauge ring rendered in static cyan (`#00F2FE`) at the probability percentage ($78.4\%$). Displays a pulsing `HIGH RISK` badge and the \"Danger Trigger\" annotation in cyan with drop-shadow.
+- **Peak Waypoint Summary Bar**: Highlights the peak wind speed, peak timing, and a color-coded cyclone category badge.
+
+#### 7. `NwpComparisonMatrix.tsx` — Model Benchmark Table
+- **Comparison Table**: Renders 4 rows (CYCLO-AI, ECMWF, IMD-GFS, NCMRWF) across 6 columns: Show on Map toggle (color-coded checkbox), Weather Model name + description, 24h/48h/72h track error (km), and Predicted Landfall Location.
+- **AI Row Highlight**: The CYCLO-AI row receives a `bg-[#00F2FE]/5` background with cyan-bordered, inline-flex error badge.
+- **Orange Column Headers**: All `<th>` elements styled in `#FF5E36` with `[text-shadow:0_2px_4px_rgba(0,0,0,0.95)]`.
+- **Noise Overlay**: `<Noise patternAlpha={10} />` on the container background with prominent cyan glow border.
+- **Whitespace Fix**: All cells have `whitespace-nowrap` and the table has `min-w-[560px]` within `overflow-x-auto` to prevent badge wrapping.
+- **Guidance Note**: Plain-language explanation at the bottom: \"Lower error (km) means higher accuracy\".
+
+#### 8. `PipelineHandoffExport.tsx` — Scientific Pipeline Hub
+Split into two sections:
+- **Section 1 (3 Inter-Page CTAs)**: `BroadcastAlertsPillLink` (→ `/alerts`), `SimulateFloodingPillLink` (→ `/digital-twin`), `ValidatePinnsPillLink` (→ `/physics-lab`) — each with GSAP circular flood-wave pill hover animations.
+- **Section 2 (3 GIS Exporters):**
+  - **Export GeoJSON** (Cyan): Generates a full `FeatureCollection` GeoJSON with AI track LineString, uncertainty cone Polygon, and NWP model comparison track lines. Downloaded as `.geojson`.
+  - **Export Shapefile** (Amber): Generates a ZIP-format plain-text bundle with `README.txt` describing the contained track layers. Downloaded as `.zip`.
+  - **Export CSV** (Emerald): Generates a tab-delimited CSV of all forecast waypoints including hour, coordinates, wind speed, pressure, category, and landfall flag. Downloaded as `.csv`.
+  - All 3 use the shared `ExportPillButton` component with GSAP circular flood, dual-label stack roll-up, and color-coded icon swap.
+
+#### 9. `LandfallDetailsModal.tsx` — Coastal Diagnostic Modal
+- Full-screen overlay modal displaying the complete coastal impact profile: target district and state, precise coordinates, projected storm surge with uncertainty range, peak sustained winds (dual unit), estimated central pressure, uncertainty window hours, affected administrative block list, and current evacuation status with color-coded badge.
+- Includes \"View on GIS Map\" and \"Report RI Event to IMD\" action buttons.
+
+#### 10. `RiAttributionModal.tsx` — Rapid Intensification SHAP Panel
+- **WMO/IMD Threshold Banner**: Defines RI as $\geq 30\text{ kts}$ ($55\text{ km/h}$) in 24 hours with the current 24h wind delta prominently displayed.
+- **4 Atmospheric Driver Cards**: Sea Surface Temperature (SST vs. $28.5^\circ\text{C}$ threshold), Vertical Wind Shear (favorable/unfavorable coloring), Ocean Heat Content (OHC in $\text{kJ/cm}^2$), and Upper-Level Divergence level.
+- **SHAP Importance Bar Chart**: Horizontally oriented feature importance bars ranked by contribution, color-coded by positive (intensification) or negative (inhibiting) impact.
+
+---
+
 ## 7. Routing Architecture & Page Walkthroughs
+
 
 CYTORN utilizes the Next.js 16 App Router with two distinct route groups:
 
@@ -771,6 +880,7 @@ src/app/
 └── (main)/                       # Group: Authenticated Command Center
     ├── layout.tsx                # Topbar + AppSidebar persistent workspace
     ├── dashboard/page.tsx        # Route: /dashboard (Live Geospatial Command Dashboard)
+    ├── forecast/page.tsx         # Route: /forecast (Trajectory & Intensity Prediction Center) [NEW]
     └── satellite-analyzer/page.tsx # Route: /satellite-analyzer (Multi-Spectral Pattern Studio)
 ```
 
@@ -801,7 +911,16 @@ src/app/
 - Ingests `ScientificUploadModal` for ingesting INSAT-3DR HDF5, GeoTIFF, NetCDF-4, and PNG satellite datasets.
 - Includes `InferenceHub` with the signature GSAP capsule `RunInferenceButton` for triggering deep learning pipelines.
 
-### 7.4 Authentication & Role Verification (`/login`, `/register`)
+### 7.4 Trajectory & Intensity Prediction Center (`/forecast`)
+The newly built Page 5 is the operational PINN forecast command hub.
+- Accepts storm parameters from `/dashboard` (via Zustand store) and `/satellite-analyzer` (via URL query params `?llcc=`, `?vmax=`, `?pc=`, `?storm=`).
+- `ForecastTopBar` at the top provides storm selection, time horizon, prediction mode, and speed unit controls.
+- A responsive grid renders `ForecastGisCanvas` (left, 7 of 12 columns on XL) and a right pane with `IntensityStudio` stacked above `NwpComparisonMatrix`.
+- `LandfallCountdownBanner` below the canvas links to `LandfallDetailsModal` overlay.
+- `PipelineHandoffExport` at the bottom provides 3 inter-page CTAs and 3 format-specific GIS exporters.
+- `LandfallDetailsModal` and `RiAttributionModal` are rendered as fixed-position overlays triggered from within their respective components.
+
+### 7.5 Authentication & Role Verification (`/login`, `/register`)
 - Role selector tabs allowing instant switching between **Scientist**, **NDMA/SDMA**, and **Public**.
 - Agency ID and 256-bit encrypted credential fields with password reveal toggles.
 - Registration page for institutional onboarding of meteorological officers.
@@ -990,6 +1109,11 @@ Tactile sensor radiometric calibration sliders leverage spring dynamics to preve
 - **Sensor Radiometric Calibration Suite (`RadiometricAdjustmentsModal.tsx` & `RadiometricStrip.tsx`):** Spring-physics slider controls (`ElasticSlider.tsx`) governing Brightness, Contrast, Gamma, and Convective Thresholds.
 - **Multi-Format Satellite Raster Ingestion Hub (`ScientificUploadModal.tsx` & `ImageUploader.tsx`):** Direct ingestion and validation of INSAT-3DR HDF5, GeoTIFF, NetCDF-4, and PNG datasets.
 - **Tactical Navigation & Micro-Interactions Suite:** IMD Scientist operational profile capsule pill (`ScientistProfilePill.tsx`), tactical alerts counter pill (`AlertsPill.tsx`), Fullscreen API toggle (`FullscreenButton.tsx`), GIS layer drawer toggle (`LayersButton.tsx`), concentric rotating telemetry rings (`MagicRings.tsx`), and mechanical departure-board text flipping (`SplitFlapText.tsx`).
+- **Complete Trajectory & Intensity Prediction Center — `/forecast` (Page 5):** 10-file component architecture covering storm scenario selection with Framer Motion dropdown, 3-mode PINN prediction engine (Deterministic / Ensemble / NWP Benchmark), 120h MapLibre GL GIS canvas with track cone and 30-member ensemble spaghetti, dual-axis Recharts intensity studio, RI radial gauge at $78.4\%$ with HIGH RISK badge, NWP model accuracy comparison matrix (AI vs. ECMWF / IMD-GFS / NCMRWF), landfall countdown banner, coastal diagnostic modal, SHAP RI explainability modal, and 3-format GIS scientific exporter (GeoJSON, Shapefile, CSV).
+- **GlobalNav Overlap Fix (`GlobalNav.tsx`):** Replaced `2xl:absolute 2xl:left-1/2 2xl:top-1/2 2xl:-translate-x-1/2 2xl:-translate-y-1/2` with `flex-1 min-w-0 px-2` on the center pill container. Eliminates DashboardPill / dual-clock collision on 1536px viewports (standard 1080p at 125% DPI scaling).
+- **DashboardPill Label Update (`DashboardPill.tsx`):** Shortened `targetLabel` from `"Landing Page"` to `"Landing"` for a compact navbar footprint.
+- **NwpComparisonMatrix Badge Fix:** Added `whitespace-nowrap`, `inline-flex`, and `min-w-[560px]` to prevent `38 km` badge from wrapping across two lines in narrow panels.
+- **Export Button Label Generalization (`PipelineHandoffExport.tsx`):** Replaced verbose format labels with clean generic action labels: `Export GeoJSON`, `Export Shapefile`, `Export CSV`.
 
 ### 🚀 Upcoming Milestones (Future Scope):
 1. **Live FastMapLibre GL Integration:** Connect MapLibre GL instance to live WMS/WMTS raster tile servers (MOSDAC INSAT-3DR TIR-1 layers).
