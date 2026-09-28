@@ -26,7 +26,7 @@ import {
 } from "@/components/forecast/types";
 import { 
   ALL_STORMS, 
-  CYCLONE_MOCHA, 
+  CYCLONE_ARNAB, 
   synthesizeScenarioFromInputs 
 } from "@/components/forecast/forecastData";
 import { ForecastTopBar } from "@/components/forecast/ForecastTopBar";
@@ -58,7 +58,7 @@ function ForecastPredictionCenterContent() {
     if (activeStormId && ALL_STORMS[activeStormId]) {
       return activeStormId;
     }
-    return "BOB-02-MOCHA";
+    return "BOB-02-ARNAB";
   }, [stormParam, activeStormId]);
 
   const [selectedStormId, setSelectedStormId] = useState<string>(initialStormId);
@@ -72,7 +72,7 @@ function ForecastPredictionCenterContent() {
 
   // NWP Models State
   const [nwpModels, setNwpModels] = useState<NwpModelTrack[]>(
-    ALL_STORMS[selectedStormId]?.nwpModels || CYCLONE_MOCHA.nwpModels
+    ALL_STORMS[selectedStormId]?.nwpModels || CYCLONE_ARNAB.nwpModels
   );
 
   // Modals State
@@ -96,7 +96,7 @@ function ForecastPredictionCenterContent() {
 
   // Synthesize scenario with external ingested parameters if present
   const activeScenario: StormScenario = useMemo(() => {
-    const base = ALL_STORMS[selectedStormId] || CYCLONE_MOCHA;
+    const base = ALL_STORMS[selectedStormId] || CYCLONE_ARNAB;
 
     let parsedLat: number | undefined;
     let parsedLng: number | undefined;

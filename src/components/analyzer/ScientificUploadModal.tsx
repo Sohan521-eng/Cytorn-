@@ -56,9 +56,9 @@ export function ScientificUploadModal({
       pc: "956 hPa",
     },
     {
-      id: "mocha",
-      name: "INSAT3D_TIR1_20230514_MOCHA.nc",
-      storm: "Super Cyclonic Storm Mocha",
+      id: "arnab",
+      name: "INSAT3D_TIR1_20230514_ARNAB.nc",
+      storm: 'Super Cyclonic Storm "ARNAB"',
       basin: "Bay of Bengal (01B)",
       sensor: "INSAT-3D Multi-Spectral TIR-1/TIR-2",
       date: "14-MAY-2023 03:30 UTC",

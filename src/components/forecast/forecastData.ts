@@ -142,10 +142,10 @@ export function generate30EnsembleMembers(centralTrack: Waypoint[]): EnsembleMem
 // STORM SCENARIO DEFINITIONS
 // --------------------------------------------------------------------------
 
-export const CYCLONE_MOCHA: StormScenario = {
-  id: "BOB-02-MOCHA",
-  name: "Cyclone MOCHA",
-  code: "MOCHA",
+export const CYCLONE_ARNAB: StormScenario = {
+  id: "BOB-02-ARNAB",
+  name: 'CYCLONE "ARNAB"',
+  code: "ARNAB",
   basin: "Bay of Bengal",
   activeStatus: "Extremely Severe Cyclonic Storm",
   currentLlcc: {
@@ -276,7 +276,7 @@ export const CYCLONE_MOCHA: StormScenario = {
   }
 };
 
-CYCLONE_MOCHA.ensembleMembers = generate30EnsembleMembers(CYCLONE_MOCHA.forecastTrack);
+CYCLONE_ARNAB.ensembleMembers = generate30EnsembleMembers(CYCLONE_ARNAB.forecastTrack);
 
 // Cyclone BIPARJOY Scenario
 export const CYCLONE_BIPARJOY: StormScenario = {
@@ -414,7 +414,7 @@ export const CYCLONE_BIPARJOY: StormScenario = {
 CYCLONE_BIPARJOY.ensembleMembers = generate30EnsembleMembers(CYCLONE_BIPARJOY.forecastTrack);
 
 export const ALL_STORMS: Record<string, StormScenario> = {
-  "BOB-02-MOCHA": CYCLONE_MOCHA,
+  "BOB-02-ARNAB": CYCLONE_ARNAB,
   "ARB-01-BIPARJOY": CYCLONE_BIPARJOY
 };
 
