@@ -318,7 +318,7 @@ export function GlobalFooter() {
         {/* BOTTOM METADATA BAR (Includes Item 23: Source Code / Repo Link) */}
         <div className="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-start gap-3 sm:gap-6 text-xs text-slate-300 font-jakarta footer-text-shadow">
           <p>
-            © 2026 CYTORN Platform. Developed by <span className="text-white font-bold">Hexa-Minds</span>.
+            © 2026 CYTORN Platform. Developed by <span className="text-white font-bold">Hexa-Mindss</span>.
           </p>
           <div className="flex items-center gap-3 sm:gap-4 font-rajdhani font-bold tracking-wider uppercase text-xs sm:text-[13px]">
             <span className="hidden sm:inline text-slate-600 font-normal">•</span>
@@ -327,7 +327,7 @@ export function GlobalFooter() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#00F2FE] hover:text-white hover:underline flex items-center gap-1 group hover:[text-shadow:0_0_10px_rgba(0,242,254,0.8)] transition-all"
-              title="SIH 2026 Submission Repository (Hexa-Minds)"
+              title="SIH 2026 Submission Repository (Hexa-Mindss)"
             >
               <span>View Repository</span>
               <ExternalLink className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
