@@ -32,7 +32,7 @@ export default function LandingPage() {
       <GlobalFooter />
 
       {/* 8. Floating Cyclone AI Assistant Widget (Matches exactly across all pages) */}
-      <XaiFloatingWidget stormName="Cyclone MOCHA" />
+      <XaiFloatingWidget stormName='CYCLONE "ARNAB"' />
     </div>
   );
 }

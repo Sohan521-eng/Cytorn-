@@ -63,7 +63,7 @@ export function SidebarNavigation() {
               <MapPin className="w-3.5 h-3.5 text-[var(--color-ai-cyan)]" />
               <span className="font-bold">Bay of Bengal</span>
             </div>
-            <p className="text-[10px] text-[var(--text-muted)]">Target: BOB-02 MOCHA</p>
+            <p className="text-[10px] text-[var(--text-muted)]">Target: BOB-02 ARNAB</p>
           </div>
         </div>
       </div>

@@ -191,7 +191,7 @@ export function HeroVideo() {
               <span className="px-1.5 py-0.5 rounded bg-[#DC2626]/20 border border-[#DC2626] text-[#DC2626] text-[10px] font-black uppercase tracking-wider font-rajdhani shadow-[0_0_8px_rgba(220,38,38,0.4)]">
                 VSCS Cat-3
               </span>
-              <span className="text-sm font-bold text-white font-rajdhani tracking-wide uppercase">CYCLONE MOCHA</span>
+              <span className="text-sm font-bold text-white font-rajdhani tracking-wide uppercase">CYCLONE &quot;ARNAB&quot;</span>
             </div>
             <div className="grid grid-cols-2 gap-x-5 gap-y-1 text-xs font-jetbrains [font-feature-settings:'tnum'_on]">
               <div>

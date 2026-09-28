@@ -125,7 +125,7 @@ export function HeroCanvas() {
             <span className="px-1.5 py-0.5 rounded bg-[#FF5E36]/20 border border-[#FF5E36] text-[#FF5E36] text-[10px] font-black uppercase tracking-wider">
               VSCS CAT-3
             </span>
-            <span className="text-sm font-bold text-white font-rajdhani tracking-wide">CYCLONE MOCHA</span>
+            <span className="text-sm font-bold text-white font-rajdhani tracking-wide">CYCLONE &quot;ARNAB&quot;</span>
           </div>
           <div className="grid grid-cols-2 gap-x-5 gap-y-1.5 text-xs">
             <div>
@@ -238,7 +238,7 @@ export function HeroCanvas() {
               </button>
             </div>
             <div className="space-y-2 text-xs text-slate-300 font-mono">
-              <p><span className="text-[#8E9EB5]">Target:</span> Cyclone Mocha (Low-Level Circulation Center)</p>
+              <p><span className="text-[#8E9EB5]">Target:</span> CYCLONE &quot;ARNAB&quot; (Low-Level Circulation Center)</p>
               <p><span className="text-[#8E9EB5]">Eye Diameter:</span> 28 km (Well-defined circular eye)</p>
               <p><span className="text-[#8E9EB5]">Brightness Temp:</span> -74.2°C (Surrounding deep convective ring)</p>
               <p><span className="text-[#8E9EB5]">Central Pressure:</span> 942 hPa</p>

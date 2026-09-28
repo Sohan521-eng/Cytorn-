@@ -16,7 +16,7 @@ export default function MainLayout({
       </div>
 
       {/* Floating Tactical Cyclone AI Assistant Trigger */}
-      <XaiFloatingWidget stormName="Cyclone MOCHA" />
+      <XaiFloatingWidget stormName='CYCLONE "ARNAB"' />
     </div>
   );
 }

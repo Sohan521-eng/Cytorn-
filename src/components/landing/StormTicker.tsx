@@ -15,14 +15,14 @@ export function StormTicker() {
       badge: "LIVE FEED",
     },
     {
-      id: "mocha",
-      name: "Cyclone MOCHA",
+      id: "arnab",
+      name: 'CYCLONE "ARNAB"',
       basin: "BoB",
       category: "Cat 3",
       wind: "185 km/h",
       pressure: "942 hPa",
       coords: "16.2°N, 88.4°E",
-      href: "/dashboard?storm=mocha",
+      href: "/dashboard",
       highlight: true,
     },
     {

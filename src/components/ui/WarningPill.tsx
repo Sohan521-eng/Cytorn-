@@ -120,14 +120,14 @@ export const WarningPill: React.FC<WarningPillProps> = ({
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#DC2626] shadow-[0_0_10px_#DC2626,0_0_18px_rgba(220,38,38,0.9)]" />
           </span>
           <span className="hidden 2xl:inline">Active Warning: </span>
-          <span>Cyclone Mocha</span>
+          <span>CYCLONE &quot;ARNAB&quot;</span>
         </span>
         <span className="pill-label-hover" aria-hidden="true">
           <span className="relative flex h-2.5 w-2.5 items-center justify-center">
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#050B14]" />
           </span>
           <span className="hidden 2xl:inline">Active Warning: </span>
-          <span>Cyclone Mocha</span>
+          <span>CYCLONE &quot;ARNAB&quot;</span>
         </span>
       </span>
     </Link>

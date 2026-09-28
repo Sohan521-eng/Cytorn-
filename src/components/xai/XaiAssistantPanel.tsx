@@ -68,7 +68,7 @@ const ROTATION_POOLS: string[][] = [
 export default function XaiAssistantPanel({
   onClose,
   className = "",
-  stormName = "Cyclone MOCHA",
+  stormName = 'CYCLONE "ARNAB"',
 }: XaiAssistantPanelProps) {
   const [messages, setMessages] = useState<Message[]>([
     {

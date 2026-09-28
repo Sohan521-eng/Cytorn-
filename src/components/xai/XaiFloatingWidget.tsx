@@ -10,7 +10,7 @@ export interface XaiFloatingWidgetProps {
   stormName?: string;
 }
 
-export function XaiFloatingWidget({ stormName = "Cyclone MOCHA" }: XaiFloatingWidgetProps) {
+export function XaiFloatingWidget({ stormName = 'CYCLONE "ARNAB"' }: XaiFloatingWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
