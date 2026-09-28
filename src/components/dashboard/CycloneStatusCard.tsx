@@ -98,7 +98,7 @@ export function CycloneStatusCard() {
             <h2 className="text-xl font-black font-rajdhani uppercase tracking-wider flex items-center gap-2">
               <span className="heading-gradient-shadow-wrapper">
                 <span className="heading-moving-gradient font-black font-rajdhani uppercase tracking-wider">
-                  CYCLONE &quot;MOCHA&quot;
+                  CYCLONE &quot;ARNAB&quot;
                 </span>
               </span>
             </h2>

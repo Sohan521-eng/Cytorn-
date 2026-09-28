@@ -681,7 +681,7 @@ d:/SIH 2026/
 ### 6.4 Command Dashboard Components (`src/components/dashboard/`)
 
 #### 1. `CycloneStatusCard.tsx`
-- **Dynamic Specular Gradient Typography:** Features the high-impact `heading-moving-gradient` CSS animation applied across the cyclone headline (*CYCLONE "MOCHA"*), cycling seamlessly through Deep Blue (`#0052FF`) → Electric Cyan (`#00F2FE`) → Specular White (`#FFFFFF`) → Hazard Coral (`#FF6B4A`).
+- **Dynamic Specular Gradient Typography:** Features the high-impact `heading-moving-gradient` CSS animation applied across the cyclone headline (*CYCLONE "ARNAB"*), cycling seamlessly through Deep Blue (`#0052FF`) → Electric Cyan (`#00F2FE`) → Specular White (`#FFFFFF`) → Hazard Coral (`#FF6B4A`).
 - **Multi-Layered Drop Shadows:** Encapsulated in `.heading-gradient-shadow-wrapper` utilizing dual ambient drop shadows (`filter: drop-shadow(0 2px 6px rgba(0,0,0,0.9)) drop-shadow(0 4px 14px rgba(0,0,0,0.85))`) to lift text cleanly off dark glassmorphic backdrops.
 - **Dynamic Category & Warning Badges:** Automatically maps storm intensity to IMD warning stages (*Stage 3 Warning / Very Severe Cyclonic Storm*) with live color-coded status badges and pulsing radar indicators.
 - **Precision Meteorological Metrics:** Houses sub-pixel LLCC coordinate readouts ($16.2^\circ\text{N}, 88.4^\circ\text{E}$), maximum sustained winds ($185\text{ km/h}$ / $100\text{ kts}$), central pressure ($942\text{ hPa}$), and estimated landfall countdown ($T-24\text{h}$ to Dhamra-Puri coastline).
@@ -897,7 +897,7 @@ src/app/
 ### 7.2 Operational Geospatial Dashboard (`/dashboard`)
 - Ingests top parameter matrix (`RealTimeParameters`) presenting 6 critical meteorological vectors with high-definition cyan typography and multi-layered text shadows.
 - Spans a high-performance geospatial satellite map canvas (`MapLayerCanvas`) rendering multi-layer INSAT-3DR TIR-1 rasters, atmospheric vector streamlines, and 120-hour PINN predicted trajectory cones.
-- Features `CycloneStatusCard` highlighting active Category 4 storm *Cyclone "MOCHA"* with flowing `heading-moving-gradient` specular title sweeps, dual drop shadows, and automated IMD warning stage badges.
+- Features `CycloneStatusCard` highlighting active Category 4 storm *Cyclone "ARNAB"* with flowing `heading-moving-gradient` specular title sweeps, dual drop shadows, and automated IMD warning stage badges.
 - Houses `ActionDispatchPanel` enabling operational commanders to initiate tiered multi-agency emergency orders (NDMA Red Alert Broadcast, Offshore Fishermen Recall, Port Authority Gale Warnings, NDRF/Coast Guard Pre-Staging) with automated latency countdowns.
 - Features interactive `TrendCharts` with dual-axis temporal projection graphs comparing 24-hour barometric drops against peak sustained wind trends.
 - Integrates `XaiAssistantPanel` both embedded within dashboard tabs and as a slide-over drawer modal summoned by `XaiFloatingWidget`.
